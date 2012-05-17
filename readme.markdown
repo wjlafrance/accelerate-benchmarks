@@ -19,11 +19,13 @@ To get some heap space, ask the OS for it. Note that `void *` functions return a
 		If the new size is the same as the old size, returns the old pointer
 
 For example, to make an array of 8 floats in heap space, you might do:
-	`float *myArray = malloc(8 * sizeof(float));`
-	`float *myArray = calloc(8, sizeof(float));`
+
+	float *myArray = malloc(8 * sizeof(float));
+	float *myArray = calloc(8, sizeof(float));
 
 As we know from Objective-C, you must release what you own, so give it back to the system:
-	`free(myArray);`
+
+	free(myArray);
 
 Note that there are no reference counts in C. The first person to free a pointer frees it for everyone. Good luck!
 
@@ -84,3 +86,6 @@ Instead, I took advantage of BLAS to scale and swap the elements.
 
 ## Conclusion
 In my benchmarks, using BLAS instead of looping can give you an 85% to 95% performance improvement on Mac, and 50%+ on iOS. These types of performance improvements are generally unheard of, and since Accelerate is built into iOS 4 and higher, as well as as far back as Mac OS 10.0, you should really consider exploring the possibilities.
+
+Check out <a href="https://github.com/wjlafrance/accelerate-benchmarks/blob/master/accelerate.c">some examples</a> and see for yourself!
+
