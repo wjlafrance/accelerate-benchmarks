@@ -31,7 +31,7 @@ Note that there are no reference counts in C. The first person to free a pointer
 
 ## So, why not just use Objective-C?
 
-Objective-C is a great programming language. It's pretty fast, and it's a strict superset of C, so any valid C code is automatically valid Objective-C. But, if you do things the true Objective-C array using NSArray and NSNumber, you'll be significantly slowed down.
+Objective-C is a great programming language. It's pretty fast, and it's a strict superset of C, so any valid C code is automatically valid Objective-C. But, if you do things the true Objective-C way using NSArray and NSNumber, you'll be significantly slowed down.
 
 First, stack access is generally faster than heap access. It'll be faster to do `int i = 5;` than `int *i = malloc(sizeof(int)); i = 5; /* .. */ free(i);`. I point this out because Objective-C objects don't live in stack space. Also, each Objective-C object that you allocate actually is a `struct objc_object`, which at minimum refers to a `struct objc_class`. This will take a lot more memory than a a simple `int`, which takes either 32 or 64 bits (an int is typically the computer's <a href="http://en.wikipedia.org/wiki/Word_size">word size</a>). 
 
